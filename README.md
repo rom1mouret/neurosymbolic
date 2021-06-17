@@ -88,9 +88,9 @@ If multiple processors happen to make the right prediction, we pick the processo
 As a baseline, domains will be detected based on the confidence (= max probability after softmax) of each classifier, not knowing the expected digit.
 The domain with the most confident classifier is the domain we choose.
 
-| Baseline   | This Project |
-|------------|--------------|
-| 41.9%      | 87.6%        |
+| Random     | Baseline   | This Project |
+|------------|------------|--------------|
+| 10.0%      | 41.9%      | 87.6%        |
 
 (domain selection accuracy [with 10 domains])
 
