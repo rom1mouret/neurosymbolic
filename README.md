@@ -10,6 +10,14 @@ In [MPCL](https://github.com/rom1mouret/mpcl), I proposed two research avenues:
 
 I believe the latter approach has good potential but it is difficult to test it on small systems as they lack structure and sparsity.
 
+## A Different Approach to CL
+
+In MPCL v1, in this project and subsequent iterations of MPCL, I will not be chasing better performance on popular datasets.  
+What strikes me as more important is that the performance gets better when we scale up the CL system.
+Deep learning is a success in that respect: we reached human-level performance on some tasks thanks to bigger data and bigger neural nets.
+Three-layer perceptrons were not doing great at first, but they held the promise of solving hard problems if they could scale.
+
+Concretely, I want catastrophic forgetting to occur less frequently as the tasks grow in complexity.
 
 ## Proposed CL Architecture
 
