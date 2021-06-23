@@ -1,5 +1,6 @@
 In my opinion, the hardest problem in CL (continual learning) is detecting domain boundaries.
-Once you know what the current domain is, e.g. car driving, you can route the inputs to specialized networks and take the appropriate action in a domain-aware manner.
+Once you know what the current domain is, e.g. car driving, you can route the inputs to specialized networks and take the appropriate action in a domain-aware manner, or
+you can build a single model conditioned by the domain id.
 You cannot readily train a model to detect domain boundaries though.
 Such a model would have to be *continually* trained, so you would be stuck in a vicious circle where you would need CL to solve CL.
 
@@ -126,6 +127,9 @@ Not only that, but the processor outputs don't need to be discrete for us to mea
 
 In further work, I will focus on this symbolic module.
 MPCL allows us to add new tasks and new processors, but it doesn't allow adding new *abstractions*, so I am considering letting new processors create new abstractions and aligning abstractions in an ad-hoc fashion.
+
+Until then, you can use [cl_tree.py](cl_tree.py), an incrementally-built decision tree ensemble implementing scikit's `partial_fit` interface.
+Unlike regular trees,  each leaf of `BernoulliTree` stores the input distribution of the training samples that fell into it. (For now, features are treated as independent Bernoulli variables, but it is trivial to deal with dependent variables). If an input vector doesn't match with the input distribution, the tree won't contribute much to the decision. In theory, this could work without Boolean inputs, but symbolic variables make it easier to precisely measure how the inputs match with the training data.
 
 ### Caveats
 
